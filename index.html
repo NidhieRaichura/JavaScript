@@ -1,0 +1,46 @@
+<!Doctype Html>
+
+<head>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<script>
+    var Url = "https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyCTM28-8d1xw_W6L48gRcYuMkLBgiSFGog"
+
+    var requestData = {
+        "document": {
+            "type": "PLAIN_TEXT",
+            "content": "Harry Potter is the best book. I think everyone should read it."
+        },
+        "encodingType": "UTF8"
+    }
+    function callAPI() {
+        $.ajax({
+            type: "POST",
+            async: true,
+            url: Url,
+            contentType: "application/json",
+            datatype: "JSON",
+            data: JSON.stringify(requestData),
+            success: function (data) {
+                console.log(data);
+            },
+            failure: function (error) {
+                console.log(error.message);
+            }
+        });
+    }
+
+</script>
+<style>
+    body {
+        font-family: calibri;
+    }
+</style>
+
+<body>
+    <form>
+        <input type="button" onclick="callAPI()" value="Call API" />
+    </form>
+</body>
+
+</html>
